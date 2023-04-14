@@ -1,4 +1,4 @@
 # pose-detection-angles
 
-Detect angles of joints from a video     
+Detect angles of joints from a video of humans using opencv and python      
 (In Development)
