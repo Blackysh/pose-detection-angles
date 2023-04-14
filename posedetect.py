@@ -24,7 +24,7 @@ while cap.isOpened():
         mp_drawing.draw_landmarks(
             frame, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
 
-
+        pose_landmarks = results.pose.landmarks
 
         # show the final output
         cv2.imshow('Output', frame)
