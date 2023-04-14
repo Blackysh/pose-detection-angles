@@ -5,7 +5,7 @@ import mediapipe as mp
 
 
 
-def getPosePositions
+def getPosePositions(video):
 
     mp_drawing = mp.solutions.drawing_utils
     mp_pose = mp.solutions.pose
@@ -21,7 +21,7 @@ def getPosePositions
     while cap.isOpened():
         # read frame from capture object
         _, frame = cap.read()
-
+        current_frame = cap.get(CV_CAP_PROP_POS_FRAMES)
         try:
             # convert the frame to RGB format
             results = pose.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
@@ -29,7 +29,7 @@ def getPosePositions
             
             image_height, image_width, _ = image.shape
             
-            nose_x, nose_y, nose_z, nose_visibility = results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].x * image_width, results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y * image_height, results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].z , results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].visibility
+            nose = [ current_frame, results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].x * image_width, results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y * image_height, results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].z , results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].visibility ]
 
 
             mp_drawing.draw_landmarks(
@@ -46,4 +46,7 @@ def getPosePositions
 
     cap.release()
     cv2.destroyAllWindows()
+
+
+    return pos_list
     
