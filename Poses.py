@@ -61,11 +61,25 @@ def getAngle(pointsList):
 
 
 def getAngles(positions):
-    return
+    pointsList = []
+    anglesList = []
+    for position in positions:
+        
+        if str(position) != "None":
+            Left_Elbow_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].y]
+            Left_Shoulder_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x, position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].y ]
+            Left_Shoulder_y3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x + 0.1, position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].y]
+            pointsList.extend([Left_Elbow_xy , Left_Shoulder_xy, Left_Shoulder_y3])
+            # Testing 
+            
+            angle = getAngle(pointsList=pointsList)
+            print(angle)
+    return 0
 
 
 
-positions = getPosePositions(video="a.mp4")
+positions = getPosePositions(video="vid4detection.mp4")
+getAngles(positions)
 """ 
 
     positions[1] <-- is the number of frame
