@@ -63,28 +63,58 @@ def getAngle(pointsList):
 def getAngles(positions):
     pointsList = []
     anglesList = []
+    angleListz = []
     for position in positions:
-        
         if str(position) != "None":
+            # Left Shoulder
             Left_Elbow_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].y]
             Left_Shoulder_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x, position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].y ]
             Left_Shoulder_y3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x + 0.1, position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].y]
             pointsList.extend([Left_Elbow_xy , Left_Shoulder_xy, Left_Shoulder_y3])
-            # Testing 
-            
-            angle = getAngle(pointsList=pointsList)
-            print(angle)
-    return 0
+            angleLeft_Shoulder = getAngle(pointsList=pointsList)
+            anglesList.append(angleLeft_Shoulder)
+            # Left Elbow
+            Left_Wrist_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_WRIST].x, position.landmark[mp_pose.PoseLandmark.LEFT_WRIST].y]
+            Left_Elbow_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].y ]
+            Left_Elbow_y3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].x + 0.1, position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].y]
+            pointsList.extend([Left_Wrist_xy , Left_Elbow_xy, Left_Elbow_y3])
+            angleLeft_Elbow = getAngle(pointsList=pointsList)
+            anglesList.append(angleLeft_Elbow)
+
+            # Right Shoulder
+            Right_Elbow_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].y]
+            Right_Shoulder_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x, position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].y ]
+            Right_Shoulder_y3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x + 0.1, position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].y]
+            pointsList.extend([Right_Elbow_xy , Right_Shoulder_xy, Right_Shoulder_y3])
+            angleRight_Shoulder = getAngle(pointsList=pointsList)
+            anglesList.append(angleRight_Shoulder)
+
+            # Right Elbow
+            Right_Wrist_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_WRIST].x, position.landmark[mp_pose.PoseLandmark.RIGHT_WRIST].y]
+            Right_Elbow_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].y ]
+            Right_Elbow_y3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].x + 0.1, position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].y]
+            pointsList.extend([Right_Wrist_xy , Right_Elbow_xy, Right_Elbow_y3])
+            angleRight_Elbow = getAngle(pointsList=pointsList)
+            angleList.append(angleRight_Elbow)
 
 
 
-positions = getPosePositions(video="vid4detection.mp4")
-getAngles(positions)
+
+
+            # At Last (Changing to new frame)
+            anglesList.append(":")
+            angleListz.append(":")
+    return [ angleList , angleListz ] 
+
+
+
+positions = getPosePositions(video="a.mp4")
+angles = getAngles(positions)
 """ 
 
     positions[1] <-- is the number of frame
     .landmark[  mp_pose.PoseLandmark.NOSE <-- Landmark Name     ]
     .x <-- x axis, y axis, z axis, visibility . 
 
-"""
 print(positions[1].landmark[mp_pose.PoseLandmark.NOSE].x)
+"""
