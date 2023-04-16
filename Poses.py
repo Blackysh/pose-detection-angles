@@ -73,6 +73,7 @@ def getAngles(positions):
             pointsList.extend([Left_Elbow_xy , Left_Shoulder_xy, Left_Shoulder_y3])
             angleLeft_Shoulder = getAngle(pointsList=pointsList)
             anglesList.append(angleLeft_Shoulder)
+
             # Left Elbow
             Left_Wrist_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_WRIST].x, position.landmark[mp_pose.PoseLandmark.LEFT_WRIST].y]
             Left_Elbow_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].y ]
@@ -97,6 +98,54 @@ def getAngles(positions):
             angleRight_Elbow = getAngle(pointsList=pointsList)
             angleList.append(angleRight_Elbow)
 
+            # Right Leg
+            Right_KNEE_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].x, position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].y]
+            Right_HIP_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].x, position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].y ]
+            Right_HIP_y3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].x + 0.1, position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].y]
+            pointsList.extend([Right_KNEE_xy , Right_HIP_xy, Right_HIP_y3])
+            angleRight_HIP = getAngle(pointsList=pointsList)
+            anglesList.append(angleRight_HIP)
+
+            # Right KNEE
+            Right_ANKLE_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_ANKLE].x, position.landmark[mp_pose.PoseLandmark.RIGHT_ANKLE].y]
+            Right_KNEE_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].x, position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].y ]
+            Right_KNEE_y3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].x + 0.1, position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].y]
+            pointsList.extend([Right_ANKLE_xy , Right_KNEE_xy, Right_KNEE_y3])
+            angleRight_KNEE = getAngle(pointsList=pointsList)
+            angleList.append(angleRight_KNEE)
+
+
+            # Right Leg
+            Right_KNEE_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].x, position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].y]
+            Right_HIP_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].x, position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].y ]
+            Right_HIP_y3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].x + 0.1, position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].y]
+            pointsList.extend([Right_KNEE_xy , Right_HIP_xy, Right_HIP_y3])
+            angleRight_HIP = getAngle(pointsList=pointsList)
+            anglesList.append(angleRight_HIP)
+
+            # Right KNEE
+            Right_ANKLE_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_ANKLE].x, position.landmark[mp_pose.PoseLandmark.RIGHT_ANKLE].y]
+            Right_KNEE_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].x, position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].y ]
+            Right_KNEE_y3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].x + 0.1, position.landmark[mp_pose.PoseLandmark.RIGHT_KNEE].y]
+            pointsList.extend([Right_ANKLE_xy , Right_KNEE_xy, Right_KNEE_y3])
+            angleRight_KNEE = getAngle(pointsList=pointsList)
+            angleList.append(angleRight_KNEE)
+
+            # LEFT Leg
+            LEFT_KNEE_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_KNEE].x, position.landmark[mp_pose.PoseLandmark.LEFT_KNEE].y]
+            LEFT_HIP_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_HIP].x, position.landmark[mp_pose.PoseLandmark.LEFT_HIP].y ]
+            LEFT_HIP_y3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_HIP].x + 0.1, position.landmark[mp_pose.PoseLandmark.LEFT_HIP].y]
+            pointsList.extend([LEFT_KNEE_xy , LEFT_HIP_xy, LEFT_HIP_y3])
+            angleLEFT_HIP = getAngle(pointsList=pointsList)
+            anglesList.append(angleLEFT_HIP)
+
+            # LEFT KNEE
+            LEFT_ANKLE_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_ANKLE].x, position.landmark[mp_pose.PoseLandmark.LEFT_ANKLE].y]
+            LEFT_KNEE_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_KNEE].x, position.landmark[mp_pose.PoseLandmark.LEFT_KNEE].y ]
+            LEFT_KNEE_y3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_KNEE].x + 0.1, position.landmark[mp_pose.PoseLandmark.LEFT_KNEE].y]
+            pointsList.extend([LEFT_ANKLE_xy , LEFT_KNEE_xy, LEFT_KNEE_y3])
+            angleLEFT_KNEE = getAngle(pointsList=pointsList)
+            angleList.append(angleLEFT_KNEE)
 
 
 
