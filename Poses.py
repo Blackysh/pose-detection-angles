@@ -6,6 +6,8 @@ import re
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 
+removeMinus = True
+
 
 def getPosePositions(video):
 
@@ -54,7 +56,7 @@ def getAngle(pointsList):
     angR = math.atan( (m2-m1) / (1+(m2*m1)) )
     angD =  math.degrees(angR)
     angfinal = angD
-    removeMinus = False
+    
     if re.search('-', str(angD)) and removeMinus:
         angfinal = float(str(angD).split('-')[1])
         angfinal = 180 + angfinal
@@ -63,16 +65,19 @@ def getAngle(pointsList):
 
 def getAngles(positions):
     pointsList = []
-    anglesList = []
-    anglesListz = []
+    finalanglesList = []
+    finalanglesListz = []
+    
     for position in positions:
+        anglesList = []
+        anglesListz = []
         if str(position) != "None":
             ## X, Y angles
             # Left Shoulder
             Left_Elbow_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].y]
             Left_Shoulder_xy = [ position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x, position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].y ]
-            Left_Shoulder_y3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x + 0.1, position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].y]
-            pointsList.extend([Left_Elbow_xy , Left_Shoulder_xy, Left_Shoulder_y3])
+            Left_Shoulder_y3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_HIP].x, position.landmark[mp_pose.PoseLandmark.LEFT_HIP].y]
+            pointsList.extend([Left_Shoulder_xy , Left_Elbow_xy, Left_Shoulder_y3])
             angleLeft_Shoulder = getAngle(pointsList=pointsList)
             anglesList.append(angleLeft_Shoulder)
 
@@ -82,12 +87,12 @@ def getAngles(positions):
             Left_Elbow_y3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].x + 0.1, position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].y]
             pointsList.extend([Left_Wrist_xy , Left_Elbow_xy, Left_Elbow_y3])
             angleLeft_Elbow = getAngle(pointsList=pointsList)
-            anglesList.append(angleLeft_Elbow)
+            anglesLisremoveMinus = Falset.append(angleLeft_Elbow)
 
             # Right Shoulder
             Right_Elbow_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].y]
             Right_Shoulder_xy = [ position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x, position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].y ]
-            Right_Shoulder_y3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x + 0.1, position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].y]
+            Right_Shoulder_y3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].x, position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].y]
             pointsList.extend([Right_Elbow_xy , Right_Shoulder_xy, Right_Shoulder_y3])
             angleRight_Shoulder = getAngle(pointsList=pointsList)
             anglesList.append(angleRight_Shoulder)
@@ -153,8 +158,8 @@ def getAngles(positions):
             # Left Shoulder
             Left_Elbow_xz = [ position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.LEFT_ELBOW].z]
             Left_Shoulder_xz = [ position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x, position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].z ]
-            Left_Shoulder_z3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].x + 0.1, position.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER].z]
-            pointsList.extend([Left_Elbow_xz , Left_Shoulder_xz, Left_Shoulder_z3])
+            Left_Shoulder_z3 = [ position.landmark[mp_pose.PoseLandmark.LEFT_HIP].x, position.landmark[mp_pose.PoseLandmark.LEFT_HIP].z]
+            pointsList.extend([ Left_Shoulder_xz, Left_Elbow_xz, Left_Shoulder_z3])
             angleLeft_Shoulder = getAngle(pointsList=pointsList)
             anglesListz.append(angleLeft_Shoulder)
 
@@ -169,7 +174,7 @@ def getAngles(positions):
             # Right Shoulder
             Right_Elbow_xz = [ position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].x, position.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].z]
             Right_Shoulder_xz = [ position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x, position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].z ]
-            Right_Shoulder_z3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x + 0.1, position.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].z]
+            Right_Shoulder_z3 = [ position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].x, position.landmark[mp_pose.PoseLandmark.RIGHT_HIP].z]
             pointsList.extend([Right_Elbow_xz , Right_Shoulder_xz, Right_Shoulder_z3])
             angleRight_Shoulder = getAngle(pointsList=pointsList)
             anglesListz.append(angleRight_Shoulder)
@@ -232,13 +237,19 @@ def getAngles(positions):
             anglesListz.append(angleLEFT_KNEE)
 
             # At Last (Changing to new frame)
-            anglesList.append(":")
-            anglesListz.append(":")
-    return [ anglesList , anglesListz ] 
+            finalanglesList.append(anglesList)
+            finalanglesListz.append(anglesListz)
+
+            print(str(finalanglesList[0][0]))
+            print(str(finalanglesListz[0][0]) + "\n")
+
+
+        
+    return [ finalanglesList , finalanglesListz ] 
 
 
 
-positions = getPosePositions(video="j.mp4")
+positions = getPosePositions(video="t.mp4")
 angles = getAngles(positions)
 """ 
 
