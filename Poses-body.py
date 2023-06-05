@@ -5,10 +5,7 @@ import re
 
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
-
-
-
-thevideo = 'a.mp4'
+thevideo = 's.mp4'
 removeMinus = False
 
 
@@ -67,45 +64,43 @@ def getAngle(pointsList):
     return angfinal
 
 
-def angleXIs(frame, Joint1, Joint2, Joint3 = None):
+def angleXIs(frame, Joint1, Joint2, Joint3):
     positions = getPosePositions(video=thevideo)
     value = positions[frame].landmark
 
 
     a = [value[Joint2].x, value[Joint2].y]
     b = [value[Joint1].x, value[Joint1].y]
+    c = [value[Joint3].x, value[Joint3].y]
 
-    if Joint3 == None:
-        c = [value[Joint1].x , value[Joint2].y]
-    else:
-        c = [value[Joint3].x, value[Joint3].y]
-
-    pointsList = [a,b,c]
-    getAngle(pointsList)
+    pointsList = [b,a,c]
+    angle = getAngle(pointsList)
 
     return angle
 
 
-def angleZIs(frame, Joint1, Joint2, Joint3 = None):
+def angleZIs(frame, Joint1, Joint2, Joint3):
     positions = getPosePositions(video=thevideo)
     value = positions[frame].landmark
 
     a = [value[Joint2].y, value[Joint2].z]
     b = [value[Joint1].y, value[Joint1].z]
+    c = [value[Joint3].y, value[Joint3].z]
 
-    if Joint3 == None:
-        c = []
-    else:
-        c = [value[Joint3].y, value[Joint3].z]
-
-    pointsList = [a,b,c]
-    getAngle(pointsList)
+    pointsList = [b,a,c]
+    angle = getAngle(pointsList)
 
     return angle
 
 
+def anglesX(frame):
+    left_shoulder = angleXIs(frame,11 , 13, 23)
+    right_shoulder = angleXIs(frame, 12, 24, 14)
+    left_elbow = angleXIs(frame,13 , 15, 11)
+    right_elbow = angleXIs(frame, 14, 12, 16)
 
 
+anglesX(1)
 
 
 
