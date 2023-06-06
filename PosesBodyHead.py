@@ -1,1 +1,2 @@
-from sharedBody import positions
+from sharedALL import *
+from sharedBody import *
