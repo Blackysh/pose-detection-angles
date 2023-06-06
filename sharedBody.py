@@ -41,5 +41,8 @@ positions = getPosePositions(thevideo)
 
 
 def values(frame):
-    return positions[frame].landmark
+    try:
+        return positions[frame].landmark
+    except:
+        return None
 
