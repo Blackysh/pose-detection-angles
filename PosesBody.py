@@ -1,29 +1,6 @@
 from sharedALL import *
 from sharedBody import *
 
-def angleXIs(frame, Joint1, Joint2, Joint3):
-    value = values(frame)
-    a = [value[Joint2].x, value[Joint2].y]
-    b = [value[Joint1].x, value[Joint1].y]
-    c = [value[Joint3].x, value[Joint3].y]
-
-    pointsList = [b,a,c]
-    angle = getAngle(pointsList)
-
-    return angle
-
-
-def angleZIs(frame, Joint1, Joint2, Joint3):
-    value = values(frame)
-    a = [value[Joint2].y, value[Joint2].z]
-    b = [value[Joint1].y, value[Joint1].z]
-    c = [value[Joint3].y, value[Joint3].z]
-
-    pointsList = [b,a,c]
-    angle = getAngle(pointsList)
-
-    return angle
-
 
 def anglesXbody(frame):
     # Upper
