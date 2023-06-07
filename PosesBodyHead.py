@@ -43,3 +43,4 @@ def neckAngleY(frame):
     midPointX = diffX/2 + value[11].x
     midPointY = diffY/2 + value[11].y
     return manualAngleXIs(frame, [midPointX, midPointY], 7, 0)
+    
