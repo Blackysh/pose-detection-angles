@@ -30,9 +30,6 @@ def getPosePositions(video):
             cv2.imshow('Output', frame)
         except:
             break
-        if cv2.waitKey(1) == ord('q'):
-                break
-
 
     
     return results_pose_landmarks
