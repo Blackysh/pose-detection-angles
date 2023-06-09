@@ -52,13 +52,21 @@ def all_body_angles():
     anglesX = []
     anglesZ = []
     i = 0
+
     for position in positions:
-        angleX = anglesXbody(i)
-        angleZ = anglesZbody(i)
+        try:
+            angleX = anglesXbody(i)
+            angleZ = anglesZbody(i)
+        except:
+            angleX = None
+            angleZ = None
         anglesX.append(anglesX)
         anglesZ.append(angleZ)
         i+=1
+        
+
 
     return [anglesX, anglesZ]
+
 
 bodyAngles = all_body_angles()

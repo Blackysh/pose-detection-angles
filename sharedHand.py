@@ -1,28 +1,40 @@
 from sharedALL import *
+from sharedALL import thevideo
 
-def getPosePositions(thevideo):
+thevideo = thevideo
+def getPosePositions(video):
     results_hand_landmarks = []
+
     mpHands = mp.solutions.hands
     hands = mpHands.Hands()
-    mpDraw = mp.solutions.drawing_utils
-    cap = cv2.VideoCapture(thevideo)
 
-    while cap.isOpened():
+    cap = cv2.VideoCapture(video)
+    print(thevideo)
+
+    while cap.isOpened() & cap.isOpened() != None:
         try:
             _, frame = cap.read()
-            results = hands.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
 
-            image_height, image_width, _ = frame.shape         
+            if frame is not None:
 
-            mp_drawing.draw_landmarks(
-                        frame, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+                image_height, image_width, _ = frame.shape         
 
-            ## results_hand_landmarks.append(results.pose_landmarks)
-            cv2.imshow('Output', frame)
+                results = hands.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
 
-        except: 
-            break
 
-        
+                rsults_stuff = results.multi_hand_landmarks
 
-getPosePositions(thevideo)
+                results_hand_landmarks.append(rsults_stuff)
+
+            else:
+                break
+
+        except Exception as E: 
+            print('error: ' + str(E))
+
+    return results_hand_landmarks
+
+hand_positions = getPosePositions(thevideo)
+
+def values(frame, hand):
+    return hand_positions[frame][hand].landmark

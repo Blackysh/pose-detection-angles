@@ -1,6 +1,5 @@
 from sharedALL import *
 
-mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 
 def getPosePositions(video):
@@ -27,10 +26,8 @@ def getPosePositions(video):
             results_pose_landmarks.append(results.pose_landmarks)
 
                 # show the final output
-            cv2.imshow('Output', frame)
         except:
-            break
-
+            print("ERROR, CONTINUEING")
     
     return results_pose_landmarks
 
@@ -38,10 +35,8 @@ positions = getPosePositions(thevideo)
 
 
 def values(frame):
-    try:
-        return positions[frame].landmark
-    except:
-        return None
+    return positions[frame].landmark
+
 
 
 def angleXIs(frame, Joint1, Joint2, Joint3):
