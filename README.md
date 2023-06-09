@@ -5,4 +5,5 @@ Detect angles of joints from a video of humans using opencv and python
 (In Development)
 
 
-![Pose Positions, and Names.](PoseNames.png "Pose Positions and names")
+![Hand Positions, and Names.](PoseNames.png "Pose Positions and names")
+![Hand Positions, and Names.](HandNames.png "Hand Positions and names")
