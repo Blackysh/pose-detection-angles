@@ -4,10 +4,10 @@ from sharedBody import *
 
 def anglesXbody(frame):
     # Upper
-    left_shoulder = angleXIs(frame,11 , 13, 23) #11
-    right_shoulder = angleXIs(frame, 12, 24, 14) #12
-    left_elbow = angleXIs(frame,13 , 15, 11) #13
-    right_elbow = angleXIs(frame, 14, 12, 16) #14
+    left_shoulder = angleXIs(frame,11,13,23) #11
+    right_shoulder = angleXIs(frame,12,24,14) #12
+    left_elbow = angleXIs(frame,13,15,11) #13
+    right_elbow = angleXIs(frame,14,12,16) #14
     # Lower
     left_leg = angleXIs(frame,23,25,24) #23
     right_leg = angleXIs(frame,24,23,26) #24

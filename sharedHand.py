@@ -1,7 +1,5 @@
 from sharedALL import *
-from sharedALL import thevideo
 
-thevideo = thevideo
 def getPosePositions(video):
     results_hand_landmarks = []
 
@@ -38,3 +36,29 @@ hand_positions = getPosePositions(thevideo)
 
 def values(frame, hand):
     return hand_positions[frame][hand].landmark
+
+
+def angleXIs(frame, hand, Joint1, Joint2, Joint3):
+    value = values(frame, hand)
+    a = [value[Joint2].x, value[Joint2].y]
+    b = [value[Joint1].x, value[Joint1].y]
+    c = [value[Joint3].x, value[Joint3].y]
+
+    pointsList = [b,a,c]
+    angle = getAngle(pointsList)
+
+    return angle
+
+
+def angleZIs(frame, hand, Joint1, Joint2, Joint3):
+    value = values(frame, hand)
+    a = [value[Joint2].y, value[Joint2].z]
+    b = [value[Joint1].y, value[Joint1].z]
+    c = [value[Joint3].y, value[Joint3].z]
+
+    pointsList = [b,a,c]
+    angle = getAngle(pointsList)
+
+    return angle
+
+

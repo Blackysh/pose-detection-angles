@@ -43,4 +43,27 @@ def neckAngleY(frame):
     midPointX = diffX/2 + value[11].x
     midPointY = diffY/2 + value[11].y
     return manualAngleXIs(frame, [midPointX, midPointY], 7, 0)
-    
+
+
+def neck_angles():
+    anglesY = []
+    anglesZ = []
+    i = 0
+
+    for position in positions:
+        try:
+            angleY = neckAngleY(i)
+            angleZ = neckAngleZ(i)
+        except:
+            angleY = None
+            angleZ = None
+        anglesX.append(anglesX)
+        anglesZ.append(angleZ)
+        i+=1
+        
+
+
+    return [anglesX, anglesZ]
+
+
+neckAngles = neck_angles()
