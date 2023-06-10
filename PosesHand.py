@@ -51,3 +51,4 @@ def anglesHandZ(frame, hand):
     return [t1, t2, t3, i1, i2, i3, m1, m2, m3, r1, r2, r3, p1, p2, p3]
 
 
+
