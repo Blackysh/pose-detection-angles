@@ -1,7 +1,7 @@
 from sharedHand import *
 from PosesBody import wrist_left, wrist_right
 from PosesHandFingers import *
-
+import sharedBody
 
 def anglesHandX(frame, hand):
     t1 = thumbAnglesX(frame,hand)[0]
@@ -49,6 +49,31 @@ def anglesHandZ(frame, hand):
     p3 = pinktyAnglesZ(frame,hand)[2]
     
     return [t1, t2, t3, i1, i2, i3, m1, m2, m3, r1, r2, r3, p1, p2, p3]
+
+
+def is0Left(frame):
+    wristX = values(frame, 0)[0].x
+    wristY = values(frame, 0)[0].y
+
+    left_wristX = sharedBody.values(frame)[15].x
+    left_wristY = sharedBody.values(frame)[15].y
+
+    right_wristX = sharedBody.values(frame)[16].x
+    right_wristY= sharedBody.values(frame)[16].y
+
+    distance_rightX = wristX - right_wristX
+    distance_leftX = wristX - left_wristX
+
+    distance_rightY = wristY - right_wristY
+    distance_leftY = wristY - right_wristY
+
+    if distance_rightX > distance_leftX or distance_rightY > distance_leftY:
+        return True
+    
+    else:
+        return False
+
+    
 
 
 
