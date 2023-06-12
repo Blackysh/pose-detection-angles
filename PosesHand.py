@@ -115,5 +115,9 @@ def right_hand_positions():
                 rightZ = anglesHandZ(i,1)
             except:
                 print('ERROR: Second Hand Not Found') 
+        i +=1
         right_handx.append(rightX)
         right_handz.append(rightZ)
+
+
+        return [right_handx, right_handz]
