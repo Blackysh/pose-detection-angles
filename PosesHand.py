@@ -76,4 +76,44 @@ def is0Left(frame):
     
 
 
+def left_hand_positions():
+    i = 0
 
+    left_handx = []
+    left_handz = []
+    for position in hand_positions:
+        if is0Left(i):
+            leftX = anglesHandX(i, 0)
+            leftZ = anglesHandZ(i, 0)
+        else:
+            try:
+                leftX = anglesHandX(i,1)
+                leftZ = anglesHandZ(i,1)
+            except:
+                print('ERROR: Second Hand Not Found')
+        left_handx.append(leftX)
+        left_handz.append(leftZ)
+        i +=1
+
+
+    return [left_handx,left_handz]
+
+
+
+def right_hand_positions():
+    i = 0 
+    right_handx = []
+    right_handz = []
+
+    for position in hand_positions:
+        if not is0Left(i):
+            rightX = anglesHandX(i, 0)
+            rightZ = anglesHandZ(i, 0)
+        else:
+            try:
+                rightX = anglesHandX(i, 1)
+                rightZ = anglesHandZ(i,1)
+            except:
+                print('ERROR: Second Hand Not Found') 
+        right_handx.append(rightX)
+        right_handz.append(rightZ)
