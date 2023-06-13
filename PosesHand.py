@@ -121,3 +121,7 @@ def right_hand_positions():
 
 
         return [right_handx, right_handz]
+
+
+leftHand = left_hand_positions()
+rightHand = right_hand_positions()
