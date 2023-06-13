@@ -1,6 +1,9 @@
 from sharedALL import *
 
+mp_drawing = mp.solutions.drawing_utils
+mp_drawing_styles = mp.solutions.drawing_styles
 mp_pose = mp.solutions.pose
+
 
 def getPosePositions(video):
     pose = mp_pose.Pose(
@@ -11,22 +14,27 @@ def getPosePositions(video):
 
     cap = cv2.VideoCapture(video)
 
-    while cap.isOpened():
+    while cap.isOpened() & cap.isOpened() != None:
+
         # read frame from capture object
         _, frame = cap.read()
+
         try:
+            if frame is not None:
             # convert the frame to RGB format
-            results = pose.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-                
-            image_height, image_width, _ = frame.shape         
+                results = pose.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+                    
+                image_height, image_width, _ = frame.shape         
 
-            mp_drawing.draw_landmarks(
-                    frame, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+                mp_drawing.draw_landmarks(
+                        frame, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
 
-            results_pose_landmarks.append(results.pose_landmarks)
+                results_pose_landmarks.append(results.pose_landmarks)
+            else:
+                break
 
-                # show the final output
         except:
+                # show the final output
             print("ERROR, CONTINUEING")
     
     return results_pose_landmarks

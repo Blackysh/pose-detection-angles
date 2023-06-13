@@ -104,8 +104,6 @@ bodyAnglesP = all_body_angles()
 # After choosing if you want angle X or Angle Z, choose the frame you want the angle for
 # After choosing the angle, choose the body part that you want the angle for.
 bodyAngles = [bodyAnglesP[0], bodyAnglesP[1]]
-
-
-wrists_left = bodyAnglesP[2]
-wrists_right = bodyAnglesP[3]
+wrist_left = bodyAnglesP[2]
+wrist_right = bodyAnglesP[3]
 

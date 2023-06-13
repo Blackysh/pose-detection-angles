@@ -57,13 +57,13 @@ def neck_angles():
         except:
             angleY = None
             angleZ = None
-        anglesX.append(anglesX)
+        anglesY.append(anglesY)
         anglesZ.append(angleZ)
         i+=1
         
 
 
-    return [anglesX, anglesZ]
+    return [anglesY, anglesZ]
 
 
 neckAngles = neck_angles()

@@ -20,9 +20,9 @@ def anglesHandX(frame, hand):
     r2 = ringAnglesX(frame,hand)[1]
     r3 = ringAnglesX(frame,hand)[2]
 
-    p1 = pinktyAnglesX(frame,hand)[0]
-    p2 = pinktyAnglesX(frame,hand)[1]
-    p3 = pinktyAnglesX(frame,hand)[2]
+    p1 = pinkyAnglesX(frame,hand)[0]
+    p2 = pinkyAnglesX(frame,hand)[1]
+    p3 = pinkyAnglesX(frame,hand)[2]
     
     return [t1, t2, t3, i1, i2, i3, m1, m2, m3, r1, r2, r3, p1, p2, p3]
 
@@ -44,9 +44,9 @@ def anglesHandZ(frame, hand):
     r2 = ringAnglesZ(frame,hand)[1]
     r3 = ringAnglesZ(frame,hand)[2]
 
-    p1 = pinktyAnglesZ(frame,hand)[0]
-    p2 = pinktyAnglesZ(frame,hand)[1]
-    p3 = pinktyAnglesZ(frame,hand)[2]
+    p1 = pinkyAnglesZ(frame,hand)[0]
+    p2 = pinkyAnglesZ(frame,hand)[1]
+    p3 = pinkyAnglesZ(frame,hand)[2]
     
     return [t1, t2, t3, i1, i2, i3, m1, m2, m3, r1, r2, r3, p1, p2, p3]
 

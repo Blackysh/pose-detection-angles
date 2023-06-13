@@ -45,7 +45,7 @@ def ringAnglesZ(frame, hand):
     return [first,second,third]
 
 
-def pinktyAnglesX(frame, hand):
+def pinkyAnglesX(frame, hand):
     first = angleXIs(frame, hand, 17, 0, 18)
     second = angleXIs(frame, hand, 18,17,19)
     third = angleXIs(frame, hand, 19,18,20)
