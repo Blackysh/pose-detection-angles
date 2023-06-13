@@ -9,7 +9,7 @@ def getPosePositions(video):
     cap = cv2.VideoCapture(video)
     print(thevideo)
 
-    while cap.isOpened() & cap.isOpened() != None:
+    while cap.isOpened() and cap.isOpened() != None:
         try:
             _, frame = cap.read()
 
