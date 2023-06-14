@@ -66,7 +66,7 @@ def neckNull():
 
 
 
-bodyNull()
-leftHandNull()
-rightHandNull()
-neckNull()
+bodything = bodyNull()
+lefthandthing = leftHandNull()
+righthandthing = rightHandNull()
+neckthing = neckNull()
